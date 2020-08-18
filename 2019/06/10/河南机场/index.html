@@ -1,270 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>河南机场 | Echo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写在前面机场分类：民用航空机场、通用航空机场、军用航空机场。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="河南机场">
-<meta property="og:url" content="http://chjw.gammainfo.com/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/index.html">
-<meta property="og:site_name" content="Echo">
-<meta property="og:description" content="写在前面机场分类：民用航空机场、通用航空机场、军用航空机场。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-10T05:46:16.000Z">
-<meta property="article:modified_time" content="2020-06-12T06:46:04.734Z">
-<meta property="article:author" content="攻城师">
-<meta property="article:tag" content="机场">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Echo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.0.2"></head>
+{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Echo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chjw.gammainfo.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-河南机场" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/" class="article-date">
-  <time datetime="2019-06-10T05:46:16.000Z" itemprop="datePublished">2019-06-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      河南机场
-    </h1>
-  
+{% block page_class %}page-post-detail{% endblock %}
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>机场分类：民用航空机场、通用航空机场、军用航空机场。</p>
-<a id="more"></a>
 
-<p>民用航空机场：主要承担个人飞行、旅客运输和货物运输等飞行任务，民用机场不包括临时机场和专用机场。</p>
-<p>通用航空机场：专门承担除民用航空机场主要承担除个人飞行、旅客运输和货物运输以外的其他飞行任务，比如公务出差、空中旅游、空中表演、空中航拍、空中测绘、农林喷洒等特殊飞行任务。</p>
-<p>军用航空机场：供军用飞机起飞、着陆、停放和组织、保障飞行活动的场所，是航空兵进行作战训练等各项任务的基地。</p>
-<p>中国航空交通体系由三大门户复合枢纽机场、八大区域性枢纽机场、十二大干线机场组成。<br>北京、上海、广州为中国三大门户复合枢纽机场。<br>重庆、成都、武汉、沈阳、郑州、西安、昆明、乌鲁木齐为中国八大区域枢纽机场。<br>深圳、南京、杭州、青岛、大连、长沙、厦门、哈尔滨、南昌、南宁、兰州、呼和浩特为中国十二大干线机场。</p>
-<h2 id="河南机场"><a href="#河南机场" class="headerlink" title="河南机场"></a>河南机场</h2><p>根据中国民航局发布《中国民用航空发展第十三个五年规划》显示，河南规划建设中的机场有安阳豫东北机场、商丘观堂国际机场、平顶山鲁山机场，加上已经建成通航的郑州新郑国际机场、洛阳北郊机场、南阳姜营机场、信阳明港机场，河南未来将有7个民用航空机场，未来还会规划在三门峡、周口、潢川建立支线机场。</p>
-<p><strong>郑州新郑国际机场</strong>（IATA：CGO，ICAO：ZHCC），4F级国际民用机场，位于中国河南省郑州市郑州航空港区，是中国首个国家级航空港郑州航空港经济综合实验区核心组成部分、国际航空货运枢纽机场、中国八大区域性枢纽机场之一、“7×24小时”“全时段”通关国际机场、国内大型航空枢纽机场、国际定期航班机场、对外开放的国家一类航空口岸。年货运吞吐量仅次于上海浦东机场、广州白云山机场、深圳保安机场，位列全国第四位。</p>
-<p><strong>洛阳北郊机场</strong>（IATA：LYA，ICAO：ZHLY），4E级国际民用机场，河南排行老二的机场，是河南省重要的空中交通枢纽、中原地区重要支线机场、对外开放的国家一类航空口岸、全国唯一一个由高校主管的民航机场（由中国民航飞行学院洛阳分院主管）。</p>
-<p><strong>南阳姜营机场</strong>（IATA：NNY，ICAO：ZHNY），4D级民用机场，河南省第三个投入使用的民用机场，扩建后的南阳姜营机场也同时升级成为中原最现代化的支线机场之一，同时南阳姜营机场也是南航飞行训练基地，机场旅客吞吐量连续多年居河南省民用机场第三位。</p>
-<p><strong>信阳明港机场</strong>（IATA：XAI，ICAO：ZHXY），4C级民用机场、河南省第四座实现通航的民用机场。原为一级永久空军备用机场，主要装备中型轰炸机，后经国务院、中央军委批复同意纳入国家民航规划机场，前后花费10多年的时间，2018年10月28日正式通航。</p>
-<p><strong>安阳豫东北机场</strong>（建设中），4C级民用机场，主要服务于安阳、濮阳、鹤壁及周边地区的公务商务活动、旅游开发等航空运输需求，兼顾航空物流、通用航空和航空运动功能，同时作为郑州新郑国际机场的备降机场。</p>
-<p><strong>商丘观堂机场</strong>（建设中），4C级民用机场，在原空军商丘机场是基础上改扩建成民航机场，是“商丘航空港”经济区空间战略一的部分。</p>
-<p><strong>平顶山鲁山机场</strong>（建设中），4C级民用机场，原是军用机场，作为空军退役飞机的一个贮存中心，大量退役但还有一定飞行寿命或利用价值的军用飞机被运到这里，以作战备等用途。</p>
-<p><strong>三门峡机场</strong>（规划中），4C级民用机场</p>
-<p><strong>周口刘振屯机场</strong>（建设中），4C级民用机场</p>
-<p><strong>信阳潢川机场</strong>（规划中），4C级民用机场</p>
-<p>在通用航空机场方面目前建成的有郑州上街机场，安阳北郊机场，洛阳龙门机场，周口西华机场，驻马店平舆机场</p>
-<p><strong>郑州上街机场</strong>（IATA：HSJ，ICAO：ZHSJ），4C级通用机场，是郑州第二大机场，国内条件最好的通用航空机场，目前归河南省航空运动管理中心管理。</p>
-<p><strong>安阳北郊机场</strong>（IATA：AYN，ICAO：ZHAY），属于安阳航空运动学校所有，暂无航班计划，主要用于航校训练。安阳航空运动学校创建于1955年，作为中国航空体育运动的摇蓝，是国家体育总局所辖国内最大的航空俱乐部和航空体育训练、比赛中心，在世界重大赛事上多次夺取金牌，并为国家培养了数以千计的优秀人才，在国际上享有良好的声誉。</p>
-<p><strong>周口西华机场</strong>（IATA：待定，ICAO：待定）</p>
-<p><strong>驻马店平舆机场</strong> (IATA：待定，ICAO：待定)</p>
-<p><strong>洛阳龙门机场</strong>（IATA：待定，ICAO：待定）</p>
-<p><strong>信阳黄柏山机场</strong>（IATA：待定，ICAO：待定）</p>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>我国的飞行区等级共分4个等级，4C、4D、4E、4F。</p>
-<p>4F：空中客车A380等四发远程宽体超大客机<br>4E：波音747全重、空中客车A340等四发远程宽体客机、大型双发客机波音787、波音777、空客A330<br>4D：波音767、波音747减重、空中客车A300等双发中程宽体客机<br>4C：空中客车A320、波音737等双发中程窄体客机</p>
-<p>我国目前拥有双民用机场的城市：北京（北京首都国际机场、北京大兴国际机场）、上海（上海浦东国际机场、上海虹桥国际机场）、南京（南京禄口国际机场、南京马鞍国际机场）、成都（成都天府国际机场、成都双流国际机场）、大连（大连周水子国际机场、大连金州湾国际机场）、青岛（青岛流亭国际机场、青岛胶东国际机场）</p>
+{% block content %}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chjw.gammainfo.com/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/" data-id="ckdzo3uhj001u0owahufghheo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li></ul>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Python命令后台运行
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Mysql从FRM文件恢复表结构</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/apache/">apache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E4%BC%97%E5%8F%B7/">公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFS/" rel="tag">NFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frm/" rel="tag">frm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ibdata1/" rel="tag">ibdata1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imagick/" rel="tag">imagick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/" rel="tag">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB/" rel="tag">迁移</a></li></ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/NFS/" style="font-size: 10px;">NFS</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/centos/" style="font-size: 20px;">centos</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/frm/" style="font-size: 10px;">frm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/ibdata1/" style="font-size: 10px;">ibdata1</a> <a href="/tags/imagick/" style="font-size: 10px;">imagick</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/swoole/" style="font-size: 10px;">swoole</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px;">公众号</a> <a href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" style="font-size: 10px;">国家中心城市</a> <a href="/tags/%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">机场</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 15px;">物联网</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">路线图</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/18/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/12/Centos7NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%8C%82%E8%BD%BD/">Centos7NFS服务器安装、配置、挂载</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">Python命令后台运行</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/">Mysql从FRM文件恢复表结构</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 攻城师<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

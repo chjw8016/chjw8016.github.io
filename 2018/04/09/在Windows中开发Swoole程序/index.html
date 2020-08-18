@@ -1,270 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>在Windows中开发Swoole程序 | Echo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于Swoole官网上是这么解释：  Swoole：面向生产环境的 PHP 异步网络通信引擎  使 PHP 开发人员可以编写高性能的异步并发 TCP、UDP、Unix Socket、HTTP，WebSocket 服务。Swoole 可以广泛应用于互联网、移动通信、企业软件、云计算、网络游戏、物联网（IOT）、车联网、智能家居等领域。 使用 PHP + Swoole 作为网络通信框架，可以使企业 I">
-<meta property="og:type" content="article">
-<meta property="og:title" content="在Windows中开发Swoole程序">
-<meta property="og:url" content="http://chjw.gammainfo.com/2018/04/09/%E5%9C%A8Windows%E4%B8%AD%E5%BC%80%E5%8F%91Swoole%E7%A8%8B%E5%BA%8F/index.html">
-<meta property="og:site_name" content="Echo">
-<meta property="og:description" content="关于Swoole官网上是这么解释：  Swoole：面向生产环境的 PHP 异步网络通信引擎  使 PHP 开发人员可以编写高性能的异步并发 TCP、UDP、Unix Socket、HTTP，WebSocket 服务。Swoole 可以广泛应用于互联网、移动通信、企业软件、云计算、网络游戏、物联网（IOT）、车联网、智能家居等领域。 使用 PHP + Swoole 作为网络通信框架，可以使企业 I">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-04-09T07:16:33.000Z">
-<meta property="article:modified_time" content="2018-04-09T08:11:43.557Z">
-<meta property="article:author" content="攻城师">
-<meta property="article:tag" content="swoole">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Echo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.0.2"></head>
+{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Echo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chjw.gammainfo.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-在Windows中开发Swoole程序" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/09/%E5%9C%A8Windows%E4%B8%AD%E5%BC%80%E5%8F%91Swoole%E7%A8%8B%E5%BA%8F/" class="article-date">
-  <time datetime="2018-04-09T07:16:33.000Z" itemprop="datePublished">2018-04-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/php/">php</a>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      在Windows中开发Swoole程序
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于Swoole"><a href="#关于Swoole" class="headerlink" title="关于Swoole"></a>关于Swoole</h2><p>官网上是这么解释：</p>
-<blockquote>
-<p>Swoole：面向生产环境的 PHP 异步网络通信引擎</p>
-</blockquote>
-<p>使 PHP 开发人员可以编写高性能的异步并发 TCP、UDP、Unix Socket、HTTP，WebSocket 服务。Swoole 可以广泛应用于互联网、移动通信、企业软件、云计算、网络游戏、物联网（IOT）、车联网、智能家居等领域。 使用 PHP + Swoole 作为网络通信框架，可以使企业 IT 研发团队的效率大大提升，更加专注于开发创新产品。</p>
-<p>为什么会有这么一个Php扩展，因为Php本身并不支持多线程，使用Swoole可以更好的提升程序的并发能力，当然这样的扩展并不只有Swoole，像Workerman、pthreads等也可以实现同样的功能，Swoole使用纯C语言编写，效率更好一些。</p>
-<p>关于Swoole的其他特性可以在<a target="_blank" rel="noopener" href="https://www.swoole.com/">官网</a>上查到</p>
-<a id="more"></a>
+{% block content %}
 
-<h2 id="回归主题"><a href="#回归主题" class="headerlink" title="回归主题"></a>回归主题</h2><p>由于Swoole仅支持Linux, OS X系统，所以才有了这篇文章，今天的主角就是cygwin，有了cygwin，Swoole就可以跑在Windows上了，毕竟还有很大一部分开发者的开发平台还是Windows，解决这个问题对于开发阶段来说还是很重要的。</p>
-<h3 id="安装cywin"><a href="#安装cywin" class="headerlink" title="安装cywin"></a>安装cywin</h3><p>安装包可以从<a target="_blank" rel="noopener" href="http://www.cygwin.com/">官网下载</a>，具体安装步骤可以去Google。但安装过程中比较重要的有两个步骤：</p>
-<p>1、Choose Download site，当安装的时候选择从互联网安装, 在”User URL”处输入以下地址<a target="_blank" rel="noopener" href="http://mirrors.163.com/cygwin/">http://mirrors.163.com/cygwin/</a>，这个是国内镜像，安装速度会快一些。然后选择中<a target="_blank" rel="noopener" href="http://mirrors.163.com/">http://mirrors.163.com</a>。</p>
-<p>2、Select Packages，在这里你可以选择一些常用的包比如php、mysql、httpd等，还有一个包（lynx或者wget）一定要记得安装，这个包以后会用到。</p>
-<p>最后安装apt-cyg，它是cywin下的包管理工具，安装命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">lynx -source rawgit.com&#x2F;transcode-open&#x2F;apt-cyg&#x2F;master&#x2F;apt-cyg &gt; apt-cyg</span><br><span class="line">install apt-cyg &#x2F;bin</span><br><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;westfly&#x2F;apt-cyg&#x2F;blob&#x2F;master&#x2F;apt-cyg</span><br><span class="line">chmod +x apt-cyg</span><br><span class="line">mv apt-cyg &#x2F;bin</span><br></pre></td></tr></table></figure>
-<p>之后就可以使用apt-cyg install vim 或apt-cyg remove vim 这样的命令了。</p>
-<h3 id="安装Swoole"><a href="#安装Swoole" class="headerlink" title="安装Swoole"></a>安装Swoole</h3><p>在Linux系统中你可以pecl install swoole这样安装，在OS X中你可以brew install swoole这样安装，但在cywin中你需要编译安装，apt-cyg中并没有swoole包。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;swoole&#x2F;swoole-src.git</span><br><span class="line">cd swoole-src</span><br><span class="line">phpize</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>然后在php.ini中加入以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[swoole]</span><br><span class="line">extension&#x3D;swoole.so</span><br></pre></td></tr></table></figure>
-<p>然后使用php -m 看下php模块是否加载成功</p>
-<p>启动swoole服务：在cygwin界面进入swoole安装目录中的example目录下的http目录，</p>
-<p>输入命令：php server.php</p>
-<p>在浏览器地址栏访问<a target="_blank" rel="noopener" href="http://127.0.0.1:9501/">http://127.0.0.1:9501/</a>，可以看到Hello Swoole说明安装成功了。</p>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chjw.gammainfo.com/2018/04/09/%E5%9C%A8Windows%E4%B8%AD%E5%BC%80%E5%8F%91Swoole%E7%A8%8B%E5%BA%8F/" data-id="ckdzo3uhc001m0owa4p5cbnmc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/05/21/%E6%BC%AB%E5%A8%81%E7%94%B5%E5%BD%B1%E5%AE%87%E5%AE%99/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          漫威电影宇宙
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/03/30/Vue%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vue模板编译</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/apache/">apache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E4%BC%97%E5%8F%B7/">公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFS/" rel="tag">NFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frm/" rel="tag">frm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ibdata1/" rel="tag">ibdata1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imagick/" rel="tag">imagick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/" rel="tag">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB/" rel="tag">迁移</a></li></ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/NFS/" style="font-size: 10px;">NFS</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/centos/" style="font-size: 20px;">centos</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/frm/" style="font-size: 10px;">frm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/ibdata1/" style="font-size: 10px;">ibdata1</a> <a href="/tags/imagick/" style="font-size: 10px;">imagick</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/swoole/" style="font-size: 10px;">swoole</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px;">公众号</a> <a href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" style="font-size: 10px;">国家中心城市</a> <a href="/tags/%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">机场</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 15px;">物联网</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">路线图</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/18/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/12/Centos7NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%8C%82%E8%BD%BD/">Centos7NFS服务器安装、配置、挂载</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">Python命令后台运行</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/">Mysql从FRM文件恢复表结构</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 攻城师<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

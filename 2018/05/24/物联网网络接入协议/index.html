@@ -1,295 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>物联网网络接入协议 | Echo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络接入协议一般负责网内设备间的组网及短距离通信等，主要分为两类：短距离通信技术，常见的协议Zigbee、WiFi、蓝牙等；低功耗广域网通信技术（LPWAN），LPWAN又可分为两类：一类是工作于未授权频谱的LoRa等技术；另一类是工作于授权频谱下，3GPP支持的2&#x2F;3&#x2F;4G蜂窝通信技术，比如NB-IoT等。 高速率业务主要使用3G、4G技术，中等速率业务主要使用GPRS技术，低速率业务目前还没有">
-<meta property="og:type" content="article">
-<meta property="og:title" content="物联网网络接入协议">
-<meta property="og:url" content="http://chjw.gammainfo.com/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E5%8D%8F%E8%AE%AE/index.html">
-<meta property="og:site_name" content="Echo">
-<meta property="og:description" content="网络接入协议一般负责网内设备间的组网及短距离通信等，主要分为两类：短距离通信技术，常见的协议Zigbee、WiFi、蓝牙等；低功耗广域网通信技术（LPWAN），LPWAN又可分为两类：一类是工作于未授权频谱的LoRa等技术；另一类是工作于授权频谱下，3GPP支持的2&#x2F;3&#x2F;4G蜂窝通信技术，比如NB-IoT等。 高速率业务主要使用3G、4G技术，中等速率业务主要使用GPRS技术，低速率业务目前还没有">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-05-24T03:50:33.000Z">
-<meta property="article:modified_time" content="2018-05-24T07:18:44.311Z">
-<meta property="article:author" content="攻城师">
-<meta property="article:tag" content="物联网">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Echo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.0.2"></head>
+{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Echo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chjw.gammainfo.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-物联网网络接入协议" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time datetime="2018-05-24T03:50:33.000Z" itemprop="datePublished">2018-05-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      物联网网络接入协议
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网络接入协议一般负责网内设备间的组网及短距离通信等，主要分为两类：短距离通信技术，常见的协议Zigbee、WiFi、蓝牙等；低功耗广域网通信技术（LPWAN），LPWAN又可分为两类：一类是工作于未授权频谱的LoRa等技术；另一类是工作于授权频谱下，3GPP支持的2/3/4G蜂窝通信技术，比如NB-IoT等。</p>
-<p>高速率业务主要使用3G、4G技术，中等速率业务主要使用GPRS技术，低速率业务目前还没有很好的蜂窝技术来满足，而它却有着丰富多样的应用场景，很多情况下只能使用GPRS技术勉力支撑。</p>
-<a id="more"></a>
-<h2 id="Zigbb"><a href="#Zigbb" class="headerlink" title="Zigbb"></a>Zigbb</h2><p>Zigbee是一种新兴的短距离、低速率的无线网络技术。主要用于近距离无线连接。它有自己的协议标准，在数千个微小的传感器之间相互协调实现通信。目前在工业控制领域应用广泛，在智能家居领域也有一定应用。</p>
-<ul>
-<li>低成本：数据传输速率低，协议简单，开发成本低，没有专利费</li>
-<li>低功耗：传输速率低，节点所需的发射功率仅1mW，并采用休眠+唤醒模式，功耗极低</li>
-<li>自组网：自带mesh功能，支持多达65000个节点连接，可以快速实现一个大规模的传感网络</li>
-<li>安全性：使用crc校验数据包的完整性，支持鉴权和认证，并且采用aes-128对传输数据进行加密</li>
-<li>传输距离：50-300M</li>
-<li>功耗：5mA</li>
-<li>速率：250kbps</li>
-</ul>
-<p>Zigbee协议的最佳应用场景是无线传感网络，比如水质监测、环境控制等节点之间需要自组网传输数据的工业场景中，在这些场景中zigbee协议的优势发挥的非常明显。目前国内外很多厂商也将zigbee运用在智能家居方案中，比如小米发布的“小米智能家居套装”。</p>
-<h2 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h2><p>蓝牙是一种无线技术标准，可实现固定设备、移动设备和楼宇个人域网之间的短距离数据交换，可连接多个设备，克服了数据同步的难题。</p>
-<ul>
-<li>低功耗：使用纽扣电池的蓝牙4.0设备可运行一年以上</li>
-<li>低成本：蓝牙协议基本成为智能手机的标配，用户无需购买额外的接入模块</li>
-<li>自组网：4.2版本中加入了mesh组网功能</li>
-<li>速率：1Mbps</li>
-<li>传输距离：2-30M</li>
-</ul>
-<p>蓝牙目前的应该领域有蓝牙耳机、音箱、穿戴设备等。</p>
-<p>低功耗蓝牙（BLE），低功耗蓝牙比标准蓝牙功率更小，用于健身跟踪器、智能手表或者其他连接设备的小型硬件，以实现无线数据传输，且不会严重影响用户手机中的电池电量。</p>
-<h2 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h2><p>Wi-Fi是一种允许电子设备连接到一个无线局域网（WLAN）的技术，通常使用2.4G或5G射频频段。</p>
-<ul>
-<li>低成本：wifi路由器现在已经很普及了，可以直接接入互联网，省去了对手机等移动终端的依赖</li>
-<li>速率：可达300Mbps</li>
-<li>传输距离：100-300M</li>
-<li>功耗：10-50mA</li>
-<li>其他：信号更强、带宽更宽</li>
-</ul>
-<p>WIFI目前的应该领域有智慧家居等。</p>
-<p>WiFi协议的功耗成为其在物联网领域应用的一大瓶颈。但是随着现在各大芯片厂商陆续推出低功耗、低成本的wifi（如esp8266），这个问题也在逐渐被解决。</p>
-<h2 id="LoRa"><a href="#LoRa" class="headerlink" title="LoRa"></a>LoRa</h2><p>LoRa是Long Range的缩写，属于无线通信技术中的一种，典型特点是距离远、功耗低。速率相对较低，可视为网络通信中的物理层实现，LoRa对应的产品就是收发器(tranciever)芯片，主要处理二进制数据流。</p>
-<p>LoRaWAN是在LoRa物理层传输技术基础之上的以MAC层为主的一套协议标准，对应OSI七层模型中的数据链路层(MAC层)，LoRaWAN消除了具体硬件的不兼容性，同时还实现了多信道接入、频率切换、自适应速率、信道管理、定时收发，节点接入认证与数据加密、漫游等特性。</p>
-<ul>
-<li>LoRa工作在1GHz以下的非授权频段，在应用时不需要额外付费</li>
-<li>LoRa模块在处理干扰、网络重迭、可伸缩性等方面具有独特的特性，但却不能提供像蜂窝协议一样的服务质量</li>
-<li>低成本、技术相对成熟</li>
-<li>适合通信并不频繁的场景</li>
-<li>LoRa是一种异步的基于ALOHA的协议，也就是说节点可以根据具体应用场景需求进行或长或短的睡眠</li>
-</ul>
-<h2 id="NB-IoT"><a href="#NB-IoT" class="headerlink" title="NB-IoT"></a>NB-IoT</h2><p>NB-IoT指窄带物联网(Narrow Band-Internet of Things)技术，是 3GPP 标准定义的 LPWA（低功耗广域网）解决方案，NB-IoT协议栈基于LTE设计，但是根据物联网的需求，去掉了一些不必要的功能，减少了协议栈处理流程的开销。</p>
-<ul>
-<li>NB-IoT构建于蜂窝网络，只消耗大约180KHz的带宽，可直接部署于GSM网络、UMTS网络或LTE网络</li>
-<li>覆盖广、连接多、速率快、成本低、功耗低</li>
-<li>适合通信频繁的场景</li>
-</ul>
+{% block content %}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chjw.gammainfo.com/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E5%8D%8F%E8%AE%AE/" data-id="ckdzo3uho00210owa1wnjep4i" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li></ul>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          物联网设备通信协议
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/05/21/%E6%BC%AB%E5%A8%81%E7%94%B5%E5%BD%B1%E5%AE%87%E5%AE%99/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">漫威电影宇宙</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/apache/">apache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E4%BC%97%E5%8F%B7/">公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFS/" rel="tag">NFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frm/" rel="tag">frm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ibdata1/" rel="tag">ibdata1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imagick/" rel="tag">imagick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/" rel="tag">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB/" rel="tag">迁移</a></li></ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/NFS/" style="font-size: 10px;">NFS</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/centos/" style="font-size: 20px;">centos</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/frm/" style="font-size: 10px;">frm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/ibdata1/" style="font-size: 10px;">ibdata1</a> <a href="/tags/imagick/" style="font-size: 10px;">imagick</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/swoole/" style="font-size: 10px;">swoole</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px;">公众号</a> <a href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" style="font-size: 10px;">国家中心城市</a> <a href="/tags/%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">机场</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 15px;">物联网</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">路线图</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/18/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/12/Centos7NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%8C%82%E8%BD%BD/">Centos7NFS服务器安装、配置、挂载</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">Python命令后台运行</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/">Mysql从FRM文件恢复表结构</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 攻城师<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

@@ -1,282 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-  
-  <title>漫威电影宇宙 | Echo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="名字漫威电影宇宙（Marvel Cinematic Universe，缩写为MCU），是以超级英雄电影为中心的共同的架空世界，由漫威影业（Marvel Studios）基于漫威漫画出版物中的角色独立制作的系列电影。它像漫画中的漫威主宇宙一样，是由共同的元素、设定、表演和角色通过跨界作品所建立的。漫威电视（Marvel Television）将宇宙进一步扩大，制作位于该宇宙中的电视剧系列。 漫威电影">
-<meta property="og:type" content="article">
-<meta property="og:title" content="漫威电影宇宙">
-<meta property="og:url" content="http://chjw.gammainfo.com/2018/05/21/%E6%BC%AB%E5%A8%81%E7%94%B5%E5%BD%B1%E5%AE%87%E5%AE%99/index.html">
-<meta property="og:site_name" content="Echo">
-<meta property="og:description" content="名字漫威电影宇宙（Marvel Cinematic Universe，缩写为MCU），是以超级英雄电影为中心的共同的架空世界，由漫威影业（Marvel Studios）基于漫威漫画出版物中的角色独立制作的系列电影。它像漫画中的漫威主宇宙一样，是由共同的元素、设定、表演和角色通过跨界作品所建立的。漫威电视（Marvel Television）将宇宙进一步扩大，制作位于该宇宙中的电视剧系列。 漫威电影">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-05-21T12:51:25.000Z">
-<meta property="article:modified_time" content="2018-05-22T02:16:40.625Z">
-<meta property="article:author" content="攻城师">
-<meta property="article:tag" content="电影">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Echo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 5.0.2"></head>
+{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Echo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chjw.gammainfo.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-漫威电影宇宙" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/21/%E6%BC%AB%E5%A8%81%E7%94%B5%E5%BD%B1%E5%AE%87%E5%AE%99/" class="article-date">
-  <time datetime="2018-05-21T12:51:25.000Z" itemprop="datePublished">2018-05-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a>
-  </div>
+{% block page_class %}page-post-detail{% endblock %}
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      漫威电影宇宙
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h2><p>漫威电影宇宙（Marvel Cinematic Universe，缩写为MCU），是以超级英雄电影为中心的共同的架空世界，由漫威影业（Marvel Studios）基于漫威漫画出版物中的角色独立制作的系列电影。它像漫画中的漫威主宇宙一样，是由共同的元素、设定、表演和角色通过跨界作品所建立的。漫威电视（Marvel Television）将宇宙进一步扩大，制作位于该宇宙中的电视剧系列。</p>
-<p>漫威电影宇宙独立于漫威宇宙中的主宇宙（Earth-616）和终极宇宙（Earth-1610），编号为Earth-199999。</p>
-<p>在漫威2015年的大事件“秘密战争”中，终极地球与主宇宙616地球相撞，两个平行宇宙双双毁灭。</p>
-<a id="more"></a>
+{% block content %}
 
-<h2 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h2><p>随着21世纪的到来，依靠飞速发展的计算机技术，在电影中真实的表现超级英雄终于成为可能——漫画改编的时机总算成熟了。福克斯和索尼先后凭借《X战警》系列、《蜘蛛侠》系列横扫美国票房。但这两个大获成功的系列电影数十亿美元的全球票房，仅给作为品牌授权方的漫威带来不足1亿的票房分成。不想再为他人做嫁衣的漫威开始了自制超级英雄大片的道路，雄心勃勃的推出了漫威电影宇宙计划。</p>
-<p>在推行漫威电影宇宙的过程中，作为漫威娱乐子公司的漫威影业在电影制作方面与漫威娱乐的分歧愈发严重，并最终导致漫威影业于2015年8月脱离漫威娱乐而直接向股权母公司迪士尼负责，从此漫威影业与漫威娱乐成为平起平坐的两家公司。 由于漫威改编的电视剧系列（如《神盾局特工》、《捍卫者联盟》等）均由漫威娱乐分公司漫威电视出品，所以漫威影业的独立也暗示着此后漫威电影与电视剧的演员相互客串的可能性降至几乎为零。</p>
-<p>2017年12月，漫威影业所属华特迪士尼公司以524亿美元收购福克斯集团旗下部分产权，包括由21世纪福克斯所拥有的X战警、神奇四侠等系列版权，也一并收回华特迪士尼公司旗下漫威影业。美国时间2017年12月14日，华特迪士尼公司宣布X战警、死侍、神奇四侠等角色，将正式回归漫威电影宇宙。</p>
-<p>同年索尼影业和漫威影业联合出品的超级英雄重启之作《蜘蛛侠：英雄归来》，标志着蜘蛛侠的版权索尼影业开始与漫威影业共享版权，以后蜘蛛侠也会是复仇者联盟的常客了。</p>
-<h2 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h2><h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><p>《钢铁侠》、《无敌浩克》、《钢铁侠2》、《雷神》、《美国队长：复仇者先锋》、《复仇者联盟》</p>
-<h3 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h3><p>《钢铁侠3》、 《雷神2：黑暗世界》、《美国队长2：冬日战士》、《银河护卫队》、《复仇者联盟2：奥创纪元》、《蚁人》</p>
-<h3 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h3><p>《美国队长3：内战》、《奇异博士》、《银河护卫队2》、《蜘蛛侠：英雄归来》、《雷神3：诸神黄昏》，《黑豹》、《复仇者联盟3：无限战争》、《蚁人2：黄蜂女现身》、《惊奇队长》、《复仇者联盟4》</p>
-<h3 id="第四阶段"><a href="#第四阶段" class="headerlink" title="第四阶段"></a>第四阶段</h3><p>老英雄覆灭，新英雄登场，超级英雄重新洗牌。</p>
-<h2 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h2><p>1、2008《钢铁侠》，开启漫威电影宇宙大门的关键，漫威在2008年时遭遇窘境，孤注一掷拍了《钢铁侠》，而所有的故事就从这里开始。<br><strong>彩蛋补充</strong>：神盾局长告诉托尼，你不是世界上唯一的超级英雄。</p>
-<p>2、2008《无敌浩克》，无敌浩克的影响力并不是很大，甚至大多数观众印象中的绿巨人浩克仍是由导演李安执导的于2003年上映的《绿巨人浩克》，但该部电影上映，显示漫威对电影宇宙完整性所表达的决心。<br><strong>彩蛋补充</strong>：钢铁侠主动找到罗斯将军，暗示浩克应该加入他（复仇者联盟）。</p>
-<p>3、2010《钢铁侠2》，两年后漫威再度推出第二部钢铁侠电影，同时也加入新的英雄角色“战争机器”，让钢铁装市场也跟着打开了，使钢铁侠这位超级英雄对漫威而言，分量又更加的加重了。<br><strong>彩蛋补充</strong>：神盾局的菲尔在野外发现了雷神之锤，暗示了接下来的电影《雷神》。</p>
-<p>4、2011《雷神》，自《钢铁侠2》上映一年后，第三位漫威电影宇宙登场的超级英雄。内容讲述了索尔的经历，让观众对索尔有初步的了解，其中的喜剧元素也明显多于前三部。<br><strong>彩蛋补充</strong>：出现了宇宙魔方和他的弟弟洛基。</p>
-<p>5、2011《美国队长》，与《雷神》同年上映，看似没有超能力的超级英雄。故事的时代背景设定在二战时期，可惜当时口碑不如预期，对于漫威电影宇宙来说依然是一部很重要的电影。<br><strong>彩蛋补充</strong>：美国队长与神盾局长相遇，被直接拉入复仇者联盟。</p>
-<p>6、2012《复仇者联盟》，漫威电影最具影响力的作品，一推出就在全球各地狂揽票房。也让热爱电影的观众对一些超级英雄的印象加深，像是钢铁侠、浩克、雷神索尔、美国队长等超级英雄。是漫威电影宇宙开始以来最成功的一部作品。<br><strong>彩蛋补充</strong>：灭霸登场，第一阶段结束。</p>
-<p>7、2013《钢铁侠3》，如果硬要形容电影的话，只能用一句话“太爽了”。大量钢铁战衣登场，让钢铁迷看完后兴奋不已，是钢铁侠电影系列最为成功、票房最高的电影。<br><strong>彩蛋补充</strong>：布鲁斯-班纳登场。</p>
-<p>8、2013《雷神2：黑暗世界》，雷神索尔系列的电影，老实说都表现不佳，或许英雄给各位观众的印象还不是特别深（反倒洛基意外高人气）。导致其票房总是低于预期，不过电影风格还是维持一贯的幽默感。<br><strong>彩蛋补充</strong>：收藏家登场，为漫威电影打开迈向“宇宙之路”。</p>
-<p>9、2014《美国队长2：冬日战士》，剧情中规中矩，加入了新的超级英雄“冬兵”，相比于前作是一个非常有进步的作品。<br><strong>彩蛋补充</strong>：快银和绯红女巫登场。</p>
-<p>10、2014《银河护卫队》，漫威最为大胆、创新和突破性的一部电影。对各个英雄人物角色的性格描述设定十分完整，虽然登场角色众多，但是却没有让观众感到混乱。<br><strong>彩蛋补充</strong>：发现霍华德怪鸭。</p>
-<p>11、2015《复仇者联盟2：奥创纪元》，漫威又为观众带来重量级电影，选用了复仇者中最为恐惧的反派奥创，虽然电影相比于漫画在奥创的设定强度不同，被削弱得过多，毕竟电影长度有所限制，按照漫画，也未必是最正确的选择。不得不说对于每位人物的设定相当到位，剧情上的强弱也相对平衡，同时也出现了新的英雄“幻视”。<br><strong>彩蛋补充</strong>：此时已经准备好无限手套。</p>
-<p>12、2015《蚁人》，与《复仇者联盟2：奥创纪元》同年，漫威又推出新的英雄独立电影《蚁人》。被评为漫威电影中值得再次进电影院观赏的电影，剧情高潮迭起，掌握得十分不错。<br><strong>彩蛋补充</strong>：美国队长出现，为“英雄内战”的到来点起火苗，第二阶段结束。</p>
-<p>13、2016《美国队长3：内战》，本片规模简直是《复仇者联盟2.5》，尤其是当中40分钟的机场大战，其爽度远远超越了片中美国队长与钢铁侠一对一的对决。<br><strong>彩蛋补充</strong>：冬兵被冷冻，美国队长与黑豹交谈，透露了下一部英雄独立电影《黑豹》<br>。<br>14、2016《奇异博士》，新英雄独立电影《奇异博士》登场，除了超能力也开始带入魔法。中规中矩的英雄独立电影，魔法特效受到了观众的好评。<br><strong>彩蛋补充</strong>：奇异博士与索尔交谈，正好对应《雷神3》中的部分内容。</p>
-<p>15、2017《银河护卫队2》，维持第一部的风格，虽说票房没有预期好，但也逆转了第一部对某些角色的印象。<br><strong>彩蛋补充</strong>：对现阶段的漫威宇宙没有什么影响。</p>
-<p>16、2017《蜘蛛侠：英雄归来》，首部蜘蛛侠回归漫威的电影，是漫威和索尼影业合作推出，对于角色的描述更贴近日常生活。当然，钢铁侠在电影中也大大加了不少分。<br><strong>彩蛋补充</strong>：片尾出现了蝎子人，表示未来能继续看到蜘蛛侠系列独立电影了。</p>
-<p>17、2017《雷神3：诸神黄昏》，这次漫威放弃过往的单色调风格，大胆地在画面上使用了丰富的色彩，并加入更多幽默诙谐的内容，让电影不仅获得口碑，在各方面上来看，都是有所突破的。<br><strong>彩蛋补充</strong>：出现了灭霸的飞船，准备迎接《复仇者联盟3：无限战争》的到来。</p>
-<p>18、2018《黑豹》，在经历了《美国队长3》内战的事件之后，黑豹回到家乡，那个与世隔绝、技术先进的非洲国家瓦坎达。多年前因为一块巨大的陨石坠落到瓦坎达，从而为这个国家带来了稀有的吸音金属，这种有军事作用的金属矿藏吸引了众多外国匪徒前来掠夺，特查拉在危急时刻就会化身超级英雄黑豹保护自己的国家，正邪之战永远不会停息，他将顶替去世的父亲成为国王，但是，无论作为黑豹还是国王，特查拉的勇气都遭遇了考验，他也被卷入了一场将瓦坎达和整个世界置于险境的冲突之中。<br><strong>彩蛋补充</strong>：特查拉来到联合国总部，并发表演说，公开表明瓦干达不会再隐世，与世界接轨，并会分享瓦干达所拥有先进科技，共同建设一个更和平先进的世界，为《复仇者联盟：无限之战》铺路。</p>
-<p>19、2018《复仇者联盟3：无限战争》，银河系中的至尊霸主灭霸带着几个得力手下洗劫了全宇宙，只为了将所有的无限宝石镶嵌于金属手套上，这个手套可以将整个银河系毁灭于弹指间。为了拯救宇宙，托尼·斯塔克和史蒂夫·罗杰斯需要摒弃前嫌，重组复仇者联盟，并与蜘蛛侠、奇异博士、银河护卫队、黑豹以及瓦坎达人民的力量一同作战。<br><strong>彩蛋补充</strong>：尼克在消失前曾传送讯息给了一个神秘角色──惊奇队长，复仇者联盟4中的关键角色。</p>
-<p>20、2018《蚁人2》，蚁人迎来了自己作为超级英雄和父亲的双重身份，他在背负着蚁人职责的同时努力过好自己的生活。但二代黄蜂女霍普·凡·戴恩和汉克·皮姆博士又向他传达了一项紧迫的新任务。斯科特必须再次穿上战衣，与黄蜂女并肩作战。</p>
-<p>21、2019《惊奇队长》，《惊奇队长》成为漫威旗下第一部以女性为主角的超级英雄电影。漫威漫画中有男版和女版两位惊奇队长，现任惊奇队长是一位名为Carol Danvers的女士。凯文·费奇也在昨日的发布会表示这是一部以女惊奇队长为主角的电影。惊奇女士是复仇者联盟成员之一，因与外星人的接触而获得超乎于常人的力量和对痛苦的忍耐力，令人敬畏的物理伤害抵御能力，飞行能力和预知能力。</p>
-<p>22、2019《复仇者联盟4》，终极一战，英雄重生，开启第四阶段。</p>
-<p>6块无限宝石：心灵之石（黄色）、空间之石（蓝色）、力量之石（紫色）、时间之石（绿色）、现实之石（红色）、灵魂之石（橙色），穿插在电影里，从第一部就开始布局，只为最后终极一战，真可谓十年磨一剑，佩服。</p>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>美国电影有很多不错的系列，比如《指环王》系列、《哈利波特》系列、《X战警》系列、《变形金刚》系列、《速度与激情》系列、《蜘蛛侠》系列、《猩球崛起》系列、《迪士尼》系列、《死神来了》系列、《侏罗纪公园》系列、《终结者》系列、《第一滴血》系列、《敢死队》系列、《生化危机》系列、《星球大战》系列、《洛奇》系列、《碟中碟》系列、《灵魂战车》系列等等，最喜欢的还是漫威系列，希望下个十年会有更好的电影出现。</p>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://chjw.gammainfo.com/2018/05/21/%E6%BC%AB%E5%A8%81%E7%94%B5%E5%BD%B1%E5%AE%87%E5%AE%99/" data-id="ckdzo3uhn001z0owaamxgfwcp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E5%8D%8F%E8%AE%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          物联网网络接入协议
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/04/09/%E5%9C%A8Windows%E4%B8%AD%E5%BC%80%E5%8F%91Swoole%E7%A8%8B%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">在Windows中开发Swoole程序</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/apache/">apache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E4%BC%97%E5%8F%B7/">公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFS/" rel="tag">NFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frm/" rel="tag">frm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ibdata1/" rel="tag">ibdata1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imagick/" rel="tag">imagick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/" rel="tag">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB/" rel="tag">迁移</a></li></ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/NFS/" style="font-size: 10px;">NFS</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/centos/" style="font-size: 20px;">centos</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/frm/" style="font-size: 10px;">frm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/ibdata1/" style="font-size: 10px;">ibdata1</a> <a href="/tags/imagick/" style="font-size: 10px;">imagick</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/swoole/" style="font-size: 10px;">swoole</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px;">公众号</a> <a href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" style="font-size: 10px;">国家中心城市</a> <a href="/tags/%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">机场</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 15px;">物联网</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">路线图</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/08/18/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/12/Centos7NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%8C%82%E8%BD%BD/">Centos7NFS服务器安装、配置、挂载</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">Python命令后台运行</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/">Mysql从FRM文件恢复表结构</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 攻城师<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}

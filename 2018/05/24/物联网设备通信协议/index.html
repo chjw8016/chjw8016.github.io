@@ -1,38 +1,427 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>物联网设备通信协议 | Echo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="设备通讯协议主要是运行在传统互联网TCP&#x2F;IP协议之上的设备通讯协议，负责设备通过互联网进行数据交换及通信。比较常见的通讯协议包括：HTTP、websocket、XMPP、COAP、MQTT。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物联网设备通信协议">
+<meta property="og:url" content="http://chjw.gammainfo.com/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="设备通讯协议主要是运行在传统互联网TCP&#x2F;IP协议之上的设备通讯协议，负责设备通过互联网进行数据交换及通信。比较常见的通讯协议包括：HTTP、websocket、XMPP、COAP、MQTT。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-24T03:50:52.000Z">
+<meta property="article:modified_time" content="2018-05-24T07:23:49.129Z">
+<meta property="article:author" content="攻城师">
+<meta property="article:tag" content="物联网">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+    
+<link rel="stylesheet" href="/css/style.css">
 
-{% block page_class %}page-post-detail{% endblock %}
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
 
 
-{% block content %}
+<meta name="generator" content="Hexo 5.0.2"></head>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Echo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-{% endblock %}
-
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+<script src="/js/insight.js"></script>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">echo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Zhengzhou, Henan, China</span>
+            <a id="follow" target="_blank" href="https://github.com/chjw8016/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                31
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                25
+                <span>标签</span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-物联网设备通信协议" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            物联网设备通信协议
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">
+            <time datetime="2018-05-24T03:50:52.000Z" itemprop="datePublished">2018-05-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>设备通讯协议主要是运行在传统互联网TCP/IP协议之上的设备通讯协议，负责设备通过互联网进行数据交换及通信。比较常见的通讯协议包括：HTTP、websocket、XMPP、COAP、MQTT。</p>
+<a id="more"></a>
+<h2 id="HTTP、WebSocket、XMPP"><a href="#HTTP、WebSocket、XMPP" class="headerlink" title="HTTP、WebSocket、XMPP"></a>HTTP、WebSocket、XMPP</h2><p>HTTP协议是典型的CS通讯模式，由客户端主动发起连接，向服务器请求XML或JSON数据。该协议最早是为了适用web浏览器的上网浏览场景和设计的，目前在PC、手机、pad等终端上都应用广泛，但并不适用于物联网场景。</p>
+<p>Websocket是一个可行的办法。websocket是HTML5提出的基于TCP之上的可支持全双工通信的协议标准，其在设计上基本遵循HTTP的思路，对于基于HTTP协议的物联网系统是一个很好的补充。</p>
+<p>XMPP是基于XML的协议，由于其开放性和易用性，在互联网及时通讯应用中运用广泛。相对HTTP，XMPP在通讯的业务流程上是更适合物联网系统的，开发者不用花太多心思去解决设备通讯时的业务通讯流程，相对开发成本会更低。但是XMPP协议中的安全性以及计算资源消耗的硬伤并没有得到本质的解决。</p>
+<h2 id="COAP"><a href="#COAP" class="headerlink" title="COAP"></a>COAP</h2><p>COAP协议的设计目标就是在低功耗低速率的设备上实现物联网通信。coap和HTTP协议一样，采用URL标示需要发送的数据，在协议格式的设计上也基本是参考HTTP协议，非常容易理解。</p>
+<ul>
+<li>采用UDP而不是TCP。这省去了TCP建立连接的成本及协议栈的开销</li>
+<li>将数据包头部都采用二进制压缩，减小数据量以适应低网络速率场景</li>
+<li>通过扩展协议方式也简单的实现订阅与发布模型</li>
+<li>支持可靠传输，数据重传，块传输， 确保数据可靠到达</li>
+<li>使用DTLS来做安全传输层，该层运行于UDP之上</li>
+<li>非长连接通信，适用于低功耗物联网场景</li>
+<li>支持分块传输，把文件拆解成多个块进行传输</li>
+<li>支持IP多播, 即可以同时向多个设备发送请求</li>
+<li>协议包轻量级，最小长度仅为4B</li>
+<li>消息模型，以消息为数据通信载体，通过交换网络消息来实现设备间数据通信，即可靠消息传输，也不可靠消息传输</li>
+<li>设备端可通过4个请求方法（GET, PUT, POST, DELETE）对服务器端资源进行操作</li>
+</ul>
+<p>COAP协议就像一个针对物联网场景的http移植品，很多设计保留了HTTP协议的影子，拥有web背景的开发者也能快速上手。但是由于很多物联网设备隐藏在局域网内部，coap设备作为服务器无法被外部设备寻址，在ipv6没有普及之前，coap只能适用于局域网内部（如wifi）通信，这也很大限制了它的发展。</p>
+<h2 id="MQTT"><a href="#MQTT" class="headerlink" title="MQTT"></a>MQTT</h2><p>MQTT协议是由IBM开发的即时通讯协议，相比来说比较适合物联网场景的通讯协议。MQTT协议采用发布/订阅模式，所有的物联网终端都通过TCP连接到云端，云端通过主题的方式管理各个设备关注的通讯内容，负责将设备与设备之间消息的转发。</p>
+<ul>
+<li>基于TCP/IP的长连接模式</li>
+<li>异步采用订阅与发布模型</li>
+<li>协议都是采用二进制格式编解码</li>
+<li>有非常完善的QOS机制</li>
+<li>同时支持TLS协议</li>
+<li>最小的数据包只有2个字节，对于低功耗低速网络也有很好的适应性</li>
+<li>支持反向控制</li>
+</ul>
+<p>MQTT是一个基于客户端-服务器的消息发布/订阅传输协议。MQTT协议是轻量、简单、开放和易于实现的，这些特点使它适用范围非常广泛。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/05/31/Mysql%E7%9A%84ibdata1%E6%96%87%E4%BB%B6%E9%9D%9E%E5%B8%B8%E5%A4%A7%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Mysql的ibdata1文件非常大如何解决
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/05/24/%E7%89%A9%E8%81%94%E7%BD%91%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E5%8D%8F%E8%AE%AE/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">物联网网络接入协议</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="valine-thread"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 攻城师<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.6/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'cxcUUzGoDwlWSn9qmbP6PPHo-gzGzoHsz',
+            app_key: '5NBkyxQpbB0TiU0EPXXjnNwU',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        });
+    </script>
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

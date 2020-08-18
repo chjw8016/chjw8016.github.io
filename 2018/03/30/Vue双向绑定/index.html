@@ -1,38 +1,426 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Vue双向绑定 | Echo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="写在前面 Vue.js 最核心的功能有两个，一是响应式的数据绑定系统，二是组件系统。我所理解的双向数据绑定就是当数据变化时视图自动更新，当视图变化时数据自动更新。  实现数据绑定的做法有大致如下几种：  发布者-订阅者模式（backbone.js） 脏值检查（angular.js） 数据劫持（vue.js）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue双向绑定">
+<meta property="og:url" content="http://chjw.gammainfo.com/2018/03/30/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="写在前面 Vue.js 最核心的功能有两个，一是响应式的数据绑定系统，二是组件系统。我所理解的双向数据绑定就是当数据变化时视图自动更新，当视图变化时数据自动更新。  实现数据绑定的做法有大致如下几种：  发布者-订阅者模式（backbone.js） 脏值检查（angular.js） 数据劫持（vue.js）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cn.vuejs.org/images/data.png">
+<meta property="article:published_time" content="2018-03-30T05:37:23.000Z">
+<meta property="article:modified_time" content="2018-03-30T07:58:40.243Z">
+<meta property="article:author" content="攻城师">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cn.vuejs.org/images/data.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+    
+<link rel="stylesheet" href="/css/style.css">
 
-{% block page_class %}page-post-detail{% endblock %}
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
 
 
-{% block content %}
+<meta name="generator" content="Hexo 5.0.2"></head>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Echo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-{% endblock %}
-
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+<script src="/js/insight.js"></script>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">echo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Zhengzhou, Henan, China</span>
+            <a id="follow" target="_blank" href="https://github.com/chjw8016/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                31
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                25
+                <span>标签</span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Vue双向绑定" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Vue双向绑定
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/30/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">
+            <time datetime="2018-03-30T05:37:23.000Z" itemprop="datePublished">2018-03-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/vue/">vue</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/vue/" rel="tag">vue</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p> Vue.js 最核心的功能有两个，一是响应式的数据绑定系统，二是组件系统。我所理解的双向数据绑定就是当数据变化时视图自动更新，当视图变化时数据自动更新。</p>
+<p> 实现数据绑定的做法有大致如下几种：</p>
+<ul>
+<li>发布者-订阅者模式（backbone.js）</li>
+<li>脏值检查（angular.js）</li>
+<li>数据劫持（vue.js）</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="发布者-订阅者"><a href="#发布者-订阅者" class="headerlink" title="发布者-订阅者"></a>发布者-订阅者</h3><p>一般通过sub, pub的方式实现数据和视图的绑定监听，更新数据方式通常做法是 vm.set(‘property’, value)。</p>
+<h3 id="脏值检查"><a href="#脏值检查" class="headerlink" title="脏值检查"></a>脏值检查</h3><p>angular.js 是通过脏值检测的方式比对数据是否有变更，来决定是否更新视图，最简单的方式就是通过 setInterval() 定时轮询检测数据变动，当然Google不会这么low，angular只有在指定的事件触发时进入脏值检测。</p>
+<h3 id="数据劫持"><a href="#数据劫持" class="headerlink" title="数据劫持"></a>数据劫持</h3><p> vue.js 则是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。</p>
+<h2 id="Vue双向绑定"><a href="#Vue双向绑定" class="headerlink" title="Vue双向绑定"></a>Vue双向绑定</h2><p>当视图变化时数据自动更新时比较简单，可以通过监听视图的change事件，当视图变化直接调用更新函数更新数据。</p>
+<p>当数据变化时视图自动更新是双向绑定的重点。</p>
+<p>让我们先来看一下官网的这张数据绑定的说明图：</p>
+<img src="https://cn.vuejs.org/images/data.png" alt='官网双向绑定说明图' />
+
+
+<blockquote>
+<p>原理图告诉我们，Data中的属性定义了getter、setter对属性进行劫持，当属性值改变是就会notify通知watcher对象，而watcher对象则会notify到view上对应的组件进行更新，然后我们就看到了视图的更新了，反过来当在视图输入数据时，也会触发订阅者watcher，更新最新的数据到data里面,这样model数据就能实时响应view上的数据变化了，这样一个过程就是数据的双向绑定了。</p>
+</blockquote>
+<h2 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h2><p>通过上面的介绍我们发现整个过程需要需要几个对象：</p>
+<ul>
+<li>订阅器Dep：实现新增订阅者、通知订阅者的功能</li>
+<li>监听器Observer：通过Object.defineProperty()定义属性的getter、setter。</li>
+<li>订阅者Watcher：实现view视图指令及数据和model层数据联系的管道，当在执行编译时候，他会把对应的属性创建一个Watcher对象让他和数据层model建立起联系。但数据发生变化是会触发update方法更新到视图上view中，反过来亦然。</li>
+<li>编译器Compile：负责解析模板指令，将模板中的变量替换成数据，然后初始化渲染页面视图，并将每个指令对应的节点绑定更新函数，添加监听数据的订阅者，一旦数据有变动，收到通知，更新视图。</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/03/30/Vue%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Vue模板编译
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/03/30/VueRouter%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">VueRouter原理分析</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="valine-thread"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 攻城师<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.6/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'cxcUUzGoDwlWSn9qmbP6PPHo-gzGzoHsz',
+            app_key: '5NBkyxQpbB0TiU0EPXXjnNwU',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        });
+    </script>
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

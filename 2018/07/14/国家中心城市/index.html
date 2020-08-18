@@ -1,38 +1,410 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>国家中心城市 | Echo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="2010-2018国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安。目前国家中心城市主要有两种产生方式，一是2010年2月，住房和城乡建设部发布的《全国城镇体系规划纲要（2010-2020年）》明确提出建设（北京、天津、上海、广州、重庆）国家中心城市的规划。二是2016年至2018年，国家发展改革委先后在相关区域规划中把成都、武汉、郑州和西安纳入国家中心城市建设序列。  2010">
+<meta property="og:type" content="article">
+<meta property="og:title" content="国家中心城市">
+<meta property="og:url" content="http://chjw.gammainfo.com/2018/07/14/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="2010-2018国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安。目前国家中心城市主要有两种产生方式，一是2010年2月，住房和城乡建设部发布的《全国城镇体系规划纲要（2010-2020年）》明确提出建设（北京、天津、上海、广州、重庆）国家中心城市的规划。二是2016年至2018年，国家发展改革委先后在相关区域规划中把成都、武汉、郑州和西安纳入国家中心城市建设序列。  2010">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-07-14T05:51:18.000Z">
+<meta property="article:modified_time" content="2019-04-12T03:27:29.289Z">
+<meta property="article:author" content="攻城师">
+<meta property="article:tag" content="国家中心城市">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-{% block title %} {{ page.title }} | {{ config.title }} {% endblock %}
+    
+<link rel="stylesheet" href="/css/style.css">
 
-{% block page_class %}page-post-detail{% endblock %}
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
 
 
-{% block content %}
+<meta name="generator" content="Hexo 5.0.2"></head>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Echo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-  </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-{% endblock %}
-
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+<script src="/js/insight.js"></script>
 
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">echo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Zhengzhou, Henan, China</span>
+            <a id="follow" target="_blank" href="https://github.com/chjw8016/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                31
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                25
+                <span>标签</span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-国家中心城市" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            国家中心城市
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/07/14/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/">
+            <time datetime="2018-07-14T05:51:18.000Z" itemprop="datePublished">2018-07-14</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="2010-2018国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安。"><a href="#2010-2018国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安。" class="headerlink" title="2010-2018国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安。"></a>2010-2018国家中心城市：北京、天津、上海、广州、重庆、成都、武汉、郑州、西安。</h2><p>目前国家中心城市主要有两种产生方式，一是2010年2月，住房和城乡建设部发布的《全国城镇体系规划纲要（2010-2020年）》明确提出建设（北京、天津、上海、广州、重庆）国家中心城市的规划。二是2016年至2018年，国家发展改革委先后在相关区域规划中把成都、武汉、郑州和西安纳入国家中心城市建设序列。</p>
+<ul>
+<li><p>2010年02月，住房和城乡建设部发布的《全国城镇体系规划纲要（2010-2020年）》明确提出建设（北京、天津、上海、广州、重庆）国家中心城市的规划和定位</p>
+</li>
+<li><p>2016年05月，国务院、发改委、住建部联合印发批复<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/fzgggz/fzgh/zcfg/201605/t20160504_800824.html">《成渝城市群发展规划》</a>（发改规划〔2016〕910号），文件中将成都、重庆定位为国家中心城市</p>
+</li>
+<li><p>2016年12月，经国务院正式批复，国家发改委发布<a target="_blank" rel="noopener" href="http://bgt.ndrc.gov.cn/zcfb/201612/t20161226_832585.html">《促进中部地区崛起“十三五”规划》</a>（国函〔2016〕204号），规划明确提出，支持武汉、郑州建设国家中心城市</p>
+</li>
+<li><p>2016年12月，国家发改委<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201701/t20170125_836739.html">《关于支持武汉建设国家中心城市的复函（发改规划〔2016〕 2650号）》</a>，原则同意武汉建设国家中心城市</p>
+</li>
+<li><p>2017年01月，国家发改委<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201701/t20170125_836754.html">《关于支持郑州建设国家中心城市的复函（发改规划〔2017〕154号）》</a>，原则同意郑州建设国家中心城市</p>
+</li>
+<li><p>2018年02月，经国务院正式批复，国家发改委发布<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201802/t20180207_876904.html">《关中平原城市群发展规划》</a>，明确指出西安已被列为国家中心城市</p>
+</li>
+</ul>
+<p>预测下个国家中心城市应该是<strong>沈阳</strong></p>
+<p><em>有消息称</em>：《全国城镇体系规划(2016-2030)》最终将确定4个全球城市(北京、广州、上海、深圳)和11个国家中心城市(天津、重庆、沈阳、南京、武汉、成都、西安、杭州、青岛、郑州、厦门)。</p>
+<h2 id="国家级城市群"><a href="#国家级城市群" class="headerlink" title="国家级城市群"></a>国家级城市群</h2><p>截至2018年2月，国务院共先后正式批复了9个国家级城市群：<a target="_blank" rel="noopener" href="http://www.gov.cn/zhengce/content/2015-04/05/content_9579.htm">长江中游城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbghwb/201603/t20160311_792504.html">哈长城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbghwb/201605/t20160504_800780.html">成渝城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201606/t20160603_806388.html">长江三角洲城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbghwb/201701/t20170105_834451.html">中原城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201702/t20170216_838003.html">北部湾城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201802/t20180207_876904.html">关中平原城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbghwb/201803/t20180306_879047.html">呼包鄂榆城市群</a>、<a target="_blank" rel="noopener" href="http://www.ndrc.gov.cn/zcfb/zcfbtz/201803/t20180319_879772.html">兰西城市群</a>。</p>
+<p>待批复的国家级城市群：京津冀城市群、辽中南城市群、山东半岛城市群、海峡西岸城市群、粤港澳大湾区。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more">分享到：</a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+</div>
+<script>
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+<style>
+    .bdshare_popup_box {
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .bdshare-button-style0-16 a,
+    .bdshare-button-style0-16 .bds_more {
+        padding-left: 20px;
+        margin: 6px 10px 6px 0;
+    }
+    .bdshare_dialog_list a,
+    .bdshare_popup_list a,
+    .bdshare_popup_bottom a {
+        font-family: 'Microsoft Yahei';
+    }
+    .bdshare_popup_top {
+        display: none;
+    }
+    .bdshare_popup_bottom {
+        height: auto;
+        padding: 5px;
+    }
+</style>
+
+
+</div>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Mysql从FRM文件恢复表结构
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/07/09/ImageMagick/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">ImageMagick</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="valine-thread"></div>
+</section>
+    
+
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 攻城师<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.6/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'cxcUUzGoDwlWSn9qmbP6PPHo-gzGzoHsz',
+            app_key: '5NBkyxQpbB0TiU0EPXXjnNwU',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        });
+    </script>
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,63 +1,304 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post-collapse.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>归档: 2019/6 | Echo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Echo">
+<meta property="og:url" content="http://chjw.gammainfo.com/archives/2019/06/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="攻城师">
+<meta name="twitter:card" content="summary">
+    
 
-{% block title %} {{ __('title.archive') }} | {{ config.title }} {% endblock %}
+    
 
-{% block page_class %} page-archive {% endblock %}
+    
 
-{% block content %}
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
 
-    <span class="archive-page-counter">
-      {% set cheers %}
-      {% set posts_length = site.posts.length %}
-      {% if posts_length > 210 %} {% set cheers = 'excellent' %}
-        {% elif posts_length > 130 %} {% set cheers = 'great' %}
-        {% elif posts_length > 80 %} {% set cheers = 'good' %}
-        {% elif posts_length > 50 %} {% set cheers = 'nice' %}
-        {% elif posts_length > 30 %} {% set cheers = 'ok' %}
-      {% else %}
-        {% set cheers = 'um' %}
-      {% endif %}
-      {{ __('cheers.' + cheers) }}! {{ _p("counter.archive_posts", site.posts.length) }} {{ __('keep_on') }}
-    </span>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
-    {% for post in page.posts %}
 
-      {# Show year #}
-      {% set year %}
-      {% set post.year = date(post.date, 'YYYY') %}
+    
+<link rel="stylesheet" href="/css/style.css">
 
-      {% if post.year !== year %}
-        {% set year = post.year %}
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-{{ year }}">{{ year }}</h2>
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Echo</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-      {% endif %}
-      {# endshow #}
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-      {{ post_template.render(post) }}
-
-    {% endfor %}
-
-  </section>
-
-  {% include '_partials/pagination.swig' %}
-
-{% endblock %}
-
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<script src="/js/insight.js"></script>
 
 
-{% block script_extra %}
-  {% if theme.use_motion %}
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">echo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Zhengzhou, Henan, China</span>
+            <a id="follow" target="_blank" href="https://github.com/chjw8016/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                31
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                25
+                <span>标签</span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><div class="timeline timeline-wrap">
+    
+            <div class="timeline-row timeline-row-major">
+                <span class="node"><i class="fa fa-calendar"></i></span>
+                <h1 class="title">2019</h1>
+            </div>
+        
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
+                
+    
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">
+            <time datetime="2019-06-10T05:46:16.000Z" itemprop="datePublished">2019-06-10</time>
+        </a>
+    </div>
+
+
+                    
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    
+</div>
+</section>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 攻城师<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.6/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#valine-thread' ,
+            notify:false,
+            verify:false,
+            app_id: 'cxcUUzGoDwlWSn9qmbP6PPHo-gzGzoHsz',
+            app_key: '5NBkyxQpbB0TiU0EPXXjnNwU',
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+        });
     </script>
-  {% endif %}
-{% endblock %}
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

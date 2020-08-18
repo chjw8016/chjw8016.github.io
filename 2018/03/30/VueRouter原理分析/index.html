@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>VueRouter原理分析 | Echo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于VueRoutervue-router 是 Vue.js 官方的路由库，负责在单页应用中将组件（components）映射到路由（routes），然后告诉 vue-router 在哪里渲染它们。VueRouter由三大组成部分：vue-router、router-link、router-view。  vue-router：路由器类，根据路由请求在路由视图中动态渲染选中的组件 router-li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueRouter原理分析">
+<meta property="og:url" content="http://chjw.gammainfo.com/2018/03/30/VueRouter%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="关于VueRoutervue-router 是 Vue.js 官方的路由库，负责在单页应用中将组件（components）映射到路由（routes），然后告诉 vue-router 在哪里渲染它们。VueRouter由三大组成部分：vue-router、router-link、router-view。  vue-router：路由器类，根据路由请求在路由视图中动态渲染选中的组件 router-li">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-03-30T02:53:46.000Z">
+<meta property="article:modified_time" content="2018-03-30T04:15:39.776Z">
+<meta property="article:author" content="攻城师">
+<meta property="article:tag" content="vue-router">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Echo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Echo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chjw.gammainfo.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-VueRouter原理分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/30/VueRouter%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2018-03-30T02:53:46.000Z" itemprop="datePublished">2018-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VueRouter原理分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于VueRouter"><a href="#关于VueRouter" class="headerlink" title="关于VueRouter"></a>关于VueRouter</h2><p>vue-router 是 Vue.js 官方的路由库，负责在单页应用中将组件（components）映射到路由（routes），然后告诉 vue-router 在哪里渲染它们。VueRouter由三大组成部分：vue-router、router-link、router-view。</p>
+<ul>
+<li>vue-router：路由器类，根据路由请求在路由视图中动态渲染选中的组件</li>
+<li>router-link：路由链接组件，声明用以提交路由请求的用户接口</li>
+<li>router-view：路由视图组件，负责动态渲染路由选中的组件</li>
+</ul>
+<p>路由过程：由router-link发起路由请求到vue-router，然后vue-router根据路由表进行路由决策，并告知router-view进行视图更新，最后由router-view完成动态视图更新。</p>
+<a id="more"></a>
+
+<h2 id="VueRouter原理"><a href="#VueRouter原理" class="headerlink" title="VueRouter原理"></a>VueRouter原理</h2><p>单页应用（SPA）的核心之一就是更新视图而不重新请求页面，实现这个功能主要是两种方式：Hash、History。</p>
+<ul>
+<li>Hash模式： 通过改变hash值实现页面更新</li>
+<li>HTML5 History模式：利用HTML5 History Api来模拟完整的URL实现页面更新</li>
+</ul>
+<p>在vue-router中，它提供mode参数来决定采用哪一种方式，选择流程：默认Hash–&gt;如果浏览器支持HTML5 History新特性改用HTML5 History–&gt;如果不在浏览器环境则使用abstract，之所以是这样的顺序是因为“#”太丑了。</p>
+<p>不管理是哪种模式，它的调用流程都是一样的：</p>
+<ul>
+<li>push 、replace 、listen</li>
+<li>transitionTo</li>
+<li>updateRoute</li>
+<li>app._route = route</li>
+<li>vm.render()</li>
+</ul>
+<p>HTML5 History模式有个缺陷：不能刷新页面。因为它是完整URL会向后台发请求，会返回404错误，所以需要后台增加一个覆盖所有情况的候选路由，返回index页面。</p>
+<h2 id="VueRouter实现"><a href="#VueRouter实现" class="headerlink" title="VueRouter实现"></a>VueRouter实现</h2><h4 id="如何实现对地址变更的监听？"><a href="#如何实现对地址变更的监听？" class="headerlink" title="如何实现对地址变更的监听？"></a>如何实现对地址变更的监听？</h4><p>关键词：插件机制</p>
+<p>vue-router 将自身作为一个插件安装到了 Vue，通过 Vue.mixin() 注册了一个 beforeCreate() 钩子函数，从而在之后所有的 Vue 组件创建时都会调用该钩子函数，给了检查是否有 router 参数，从而进行初始化的机会。进而通过层层调用执行了监听 hashchange 事件的动作。</p>
+<ul>
+<li>new Vue()</li>
+<li>执行 vue-router 注入的 beforeCreate 钩子函数</li>
+<li>执行 router.init(vm)</li>
+<li>执行 history.setupListeners()，注册事件监听</li>
+</ul>
+<h4 id="地址变更如何通知到-vm？"><a href="#地址变更如何通知到-vm？" class="headerlink" title="地址变更如何通知到 vm？"></a>地址变更如何通知到 vm？</h4><p>关键词：数据响应机制</p>
+<p>这个过程比较简单，在监听 hashchange 时，执行 history.transitionTo(…)，在这个过程中，会进行地址匹配，得到一个对应当前地址的 route，然后将其设置到对应的 vm._route 上。<br>vue-router采用与 Vue 本身数据相同的“数据劫持”方式，这样对 vm._route 的赋值会被 Vue 拦截到，并且触发 Vue 组件的更新渲染流程。</p>
+<h4 id="地址变更如果同步视图更新？"><a href="#地址变更如果同步视图更新？" class="headerlink" title="地址变更如果同步视图更新？"></a>地址变更如果同步视图更新？</h4><p>关键词：渲染机制</p>
+<p>接上一步，vm._route 已经接收到路由的变更，从而触发视图更新。而当视图更新进一步调用到 router-view 的 render() 时，即进入了 router-view 的处理。</p>
+<p>router-view 的 render() 采用函数调用模式，而非通过模板生成。这也是 Vue2 支持的定义组件渲染逻辑的方式，类似 React 的 render()。采用这种模式的好处是可以完全利用 JavaScript 的能力来编写逻辑，不必受制于 Vue 的类 HTML 模板语法。</p>
+<p>这里的主要处理逻辑是从根组件中取出当前的路由对象（parent.$route），然后取得该路由下对应的组件，然后交由该组件进行渲染。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chjw.gammainfo.com/2018/03/30/VueRouter%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/" data-id="ckdzo3ugm000m0owa5shu0jpr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/30/Vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vue双向绑定
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/19/JavaWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaWeb开发学习之路</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/apache/">apache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E4%BC%97%E5%8F%B7/">公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFS/" rel="tag">NFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frm/" rel="tag">frm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ibdata1/" rel="tag">ibdata1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imagick/" rel="tag">imagick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/" rel="tag">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB/" rel="tag">迁移</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/NFS/" style="font-size: 10px;">NFS</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/centos/" style="font-size: 20px;">centos</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/frm/" style="font-size: 10px;">frm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/ibdata1/" style="font-size: 10px;">ibdata1</a> <a href="/tags/imagick/" style="font-size: 10px;">imagick</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/swoole/" style="font-size: 10px;">swoole</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px;">公众号</a> <a href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" style="font-size: 10px;">国家中心城市</a> <a href="/tags/%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">机场</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 15px;">物联网</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">路线图</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/Centos7NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%8C%82%E8%BD%BD/">Centos7NFS服务器安装、配置、挂载</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">Python命令后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/">Mysql从FRM文件恢复表结构</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 攻城师<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

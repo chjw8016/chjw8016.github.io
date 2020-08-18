@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>编译安装apache（2.4.25） | Echo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍Apache至少需要apr、apr-util、pcre组件的支持。APR(Apache portable Run-time libraries，Apache可移植运行库)的目的如其名称一样，主要为上层的应用程序提供一个可以跨越多操作系统平台使用的底层支持接口库。在早期的Apache版本中，应用程序本身必须能够处理各种具体操作系统平台的细节，并针对不同的平台调用不同的处理函数。随着Apache的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译安装apache（2.4.25）">
+<meta property="og:url" content="http://chjw.gammainfo.com/2017/06/03/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85apache%EF%BC%882-4-25%EF%BC%89/index.html">
+<meta property="og:site_name" content="Echo">
+<meta property="og:description" content="介绍Apache至少需要apr、apr-util、pcre组件的支持。APR(Apache portable Run-time libraries，Apache可移植运行库)的目的如其名称一样，主要为上层的应用程序提供一个可以跨越多操作系统平台使用的底层支持接口库。在早期的Apache版本中，应用程序本身必须能够处理各种具体操作系统平台的细节，并针对不同的平台调用不同的处理函数。随着Apache的">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-06-03T02:53:45.000Z">
+<meta property="article:modified_time" content="2018-03-19T05:56:43.811Z">
+<meta property="article:author" content="攻城师">
+<meta property="article:tag" content="apache">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Echo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Echo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://chjw.gammainfo.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-编译安装apache（2-4-25）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/03/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85apache%EF%BC%882-4-25%EF%BC%89/" class="article-date">
+  <time datetime="2017-06-03T02:53:45.000Z" itemprop="datePublished">2017-06-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/apache/">apache</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编译安装apache（2.4.25）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Apache至少需要apr、apr-util、pcre组件的支持。<br>APR(Apache portable Run-time libraries，Apache可移植运行库)的目的如其名称一样，主要为上层的应用程序提供一个可以跨越多操作系统平台使用的底层支持接口库。在早期的Apache版本中，应用程序本身必须能够处理各种具体操作系统平台的细节，并针对不同的平台调用不同的处理函数。随着Apache的进一步开发，Apache组织决定将这些通用的函数独立出来并发展成为一个新的项目。这样，APR的开发就从Apache中独立出来，Apache仅仅是使用APR而已。目前APR主要还是由Apache使用，不过由于APR的较好的移植性，因此一些需要进行移植的C程序也开始使用APR。<br>APR-util是在APR的基础上提供了更多的数据结构和操作系统封装接口。APR-util依赖于APR，必须先安装APR再安装APR-util。<br>PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括perl兼容的正则表达式库。</p>
+<a id="more"></a>
+
+<h2 id="编译安装APR"><a href="#编译安装APR" class="headerlink" title="编译安装APR"></a>编译安装APR</h2><p>官方网站：<a target="_blank" rel="noopener" href="http://apr.apache.org/download.cgi">http://apr.apache.org/download.cgi</a><br>最新版本：APR 1.5.2<br>下载地址：<a target="_blank" rel="noopener" href="http://mirrors.hust.edu.cn/apache//apr/apr-1.5.2.tar.gz">http://mirrors.hust.edu.cn/apache//apr/apr-1.5.2.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd  &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget  http:&#x2F;&#x2F;mirrors.hust.edu.cn&#x2F;apache&#x2F;&#x2F;apr&#x2F;apr-1.5.2.tar.gz</span><br><span class="line">tar  -zxf  apr-1.5.2.tar.gz</span><br><span class="line">cd  apr-1.5.2</span><br><span class="line">.&#x2F;configure  --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;apr</span><br><span class="line">make  &amp;&amp;  make install</span><br></pre></td></tr></table></figure>
+<h2 id="编译安装APR-util"><a href="#编译安装APR-util" class="headerlink" title="编译安装APR-util"></a>编译安装APR-util</h2><p>官方网站：<a target="_blank" rel="noopener" href="http://apr.apache.org/download.cgi">http://apr.apache.org/download.cgi</a><br>最新版本：APR-util 1.5.4<br>下载地址：<a target="_blank" rel="noopener" href="http://mirrors.hust.edu.cn/apache//apr/apr-util-1.5.4.tar">http://mirrors.hust.edu.cn/apache//apr/apr-util-1.5.4.tar</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd  &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget  http:&#x2F;&#x2F;mirrors.hust.edu.cn&#x2F;apache&#x2F;&#x2F;apr&#x2F;apr-util-1.5.4.tar.gz</span><br><span class="line">tar  -zxf  apr-util-1.5.4.tar.gz</span><br><span class="line">cd  apr-util-1.5.4</span><br><span class="line">.&#x2F;configure  --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;apr-util  --with-apr&#x3D;&#x2F;usr&#x2F;local&#x2F;apr</span><br><span class="line">make  &amp;&amp;  make install</span><br></pre></td></tr></table></figure>
+<h2 id="编译安装PCRE"><a href="#编译安装PCRE" class="headerlink" title="编译安装PCRE"></a>编译安装PCRE</h2><p>官方网站：<a target="_blank" rel="noopener" href="http://pcre.org/">http://pcre.org/</a><br>最新版本：pcre-8.39,不能使用PCRE2<br>下载地址：<a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.40.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget ftp:&#x2F;&#x2F;ftp.csx.cam.ac.uk&#x2F;pub&#x2F;software&#x2F;programming&#x2F;pcre&#x2F;pcre-8.40.tar.gz</span><br><span class="line">tar -zxf pcre-8.40.tar.gz</span><br><span class="line">cd pcre-8.40</span><br><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;pcre</span><br><span class="line">make  &amp;&amp;  make  install</span><br></pre></td></tr></table></figure>
+<h2 id="编译安装Apache"><a href="#编译安装Apache" class="headerlink" title="编译安装Apache"></a>编译安装Apache</h2><p>官方网站：<a target="_blank" rel="noopener" href="http://httpd.apache.org/">http://httpd.apache.org/</a><br>最新版本：Apache httpd 2.4.25<br>下载地址：<a target="_blank" rel="noopener" href="http://mirrors.hust.edu.cn/apache/httpd/httpd-2.4.25.tar.gz">http://mirrors.hust.edu.cn/apache/httpd/httpd-2.4.25.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd  &#x2F;usr&#x2F;local&#x2F;src</span><br><span class="line">wget  http:&#x2F;&#x2F;mirrors.hust.edu.cn&#x2F;apache&#x2F;httpd&#x2F;httpd-2.4.25.tar.gz</span><br><span class="line">tar  -zxf  httpd-2.4.25.tar.gz</span><br><span class="line">cd httpd-2.4.25</span><br><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;usr&#x2F;local&#x2F;apache --sysconfdir&#x3D;&#x2F;etc&#x2F;httpd --enable-so --enable-ssl --enable-rewrite --with-apr&#x3D;&#x2F;usr&#x2F;local&#x2F;apr --with-apr-util&#x3D;&#x2F;usr&#x2F;local&#x2F;apr-util --with-pcre&#x3D;&#x2F;usr&#x2F;local&#x2F;pcre --enable-module&#x3D;shared</span><br><span class="line">make  &amp;&amp;  make  install</span><br></pre></td></tr></table></figure>
+<h2 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h2><p>1、将apachectl命令拷贝到/etc/init.d目录下，改名为httpd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;local&#x2F;apache&#x2F;bin&#x2F;apachectl &#x2F;etc&#x2F;init.d&#x2F;httpd</span><br></pre></td></tr></table></figure>
+<p>2、编辑/etc/init.d/httpd文件，在第1行#!/bin/sh的后面添加如下两行<br>vi /etc/init.d/httpd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#chkconfig: 2345 70 30</span><br><span class="line">#description: Apache</span><br></pre></td></tr></table></figure>
+<p>chmod +x /etc/init.d/httpd</p>
+<p>3、Apache服务尚未被添加到chkconfig列表中，需要使用–add参数将其添加进去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add httpd</span><br><span class="line">chkconfig --list httpd</span><br><span class="line">chkconfig httpd on</span><br></pre></td></tr></table></figure>
+<p>service httpd restart</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>编辑httpd.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">找到ServerName，将其设置为localhost:80，并将前面的井号删除</span><br><span class="line">&lt;Directory &#x2F;&gt;</span><br><span class="line">    Options Indexes FollowSymLinks</span><br><span class="line">    AllowOverride all</span><br><span class="line">    Allow from all</span><br><span class="line">&lt;&#x2F;Directory&gt;</span><br></pre></td></tr></table></figure>
+<p>Nginx编辑安装请参见下面的文章<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/chjw8016/p/5953011.html">http://www.cnblogs.com/chjw8016/p/5953011.html</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/chjw8016/p/5952999.html">http://www.cnblogs.com/chjw8016/p/5952999.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://chjw.gammainfo.com/2017/06/03/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85apache%EF%BC%882-4-25%EF%BC%89/" data-id="ckdzo3uih003p0owa8c4h0i9v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apache/" rel="tag">apache</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/18/%E4%B8%80%E4%B8%AA%E5%85%AC%E4%BC%97%E5%8F%B7%E5%AF%B9%E6%8E%A5%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%B9%E6%A1%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一个公众号对接多个不同系统的方案
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/03/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85php%EF%BC%885-6-30%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">编译安装php（5.6.30）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/apache/">apache</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%AC%E4%BC%97%E5%8F%B7/">公众号</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/">大前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%B5%E5%BD%B1/">电影</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFS/" rel="tag">NFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frm/" rel="tag">frm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ibdata1/" rel="tag">ibdata1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/imagick/" rel="tag">imagick</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nohup/" rel="tag">nohup</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pdf/" rel="tag">pdf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/" rel="tag">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swoole/" rel="tag">swoole</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/template/" rel="tag">template</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-router/" rel="tag">vue-router</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">公众号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" rel="tag">国家中心城市</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%9C%BA/" rel="tag">机场</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag">物联网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" rel="tag">路线图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB/" rel="tag">迁移</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/NFS/" style="font-size: 10px;">NFS</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/centos/" style="font-size: 20px;">centos</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/frm/" style="font-size: 10px;">frm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/ibdata1/" style="font-size: 10px;">ibdata1</a> <a href="/tags/imagick/" style="font-size: 10px;">imagick</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nohup/" style="font-size: 10px;">nohup</a> <a href="/tags/pdf/" style="font-size: 10px;">pdf</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/swoole/" style="font-size: 10px;">swoole</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/vue-router/" style="font-size: 10px;">vue-router</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 15px;">公众号</a> <a href="/tags/%E5%9B%BD%E5%AE%B6%E4%B8%AD%E5%BF%83%E5%9F%8E%E5%B8%82/" style="font-size: 10px;">国家中心城市</a> <a href="/tags/%E6%9C%BA%E5%9C%BA/" style="font-size: 10px;">机场</a> <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" style="font-size: 15px;">物联网</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" style="font-size: 10px;">路线图</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/Centos7NFS%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E6%8C%82%E8%BD%BD/">Centos7NFS服务器安装、配置、挂载</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/Python%E5%91%BD%E4%BB%A4%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">Python命令后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/10/%E6%B2%B3%E5%8D%97%E6%9C%BA%E5%9C%BA/">河南机场</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/18/Mysql%E4%BB%8EFRM%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E8%A1%A8%E7%BB%93%E6%9E%84/">Mysql从FRM文件恢复表结构</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 攻城师<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>hexo的categories与tags配置 | Echo</title>
+    <title>Centos7使用rsync实现数据备份 | Echo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="添加标签hexo new page tags确认站点配置文件里有tag_dir: tags确认主题配置文件里有tags: &#x2F;tags编辑站点的source&#x2F;tags&#x2F;index.md，添加 1234title: tagsdate: 2015-10-20 06:49:50type: &quot;tags&quot;comments: false">
+    <meta name="description" content="rsync是什么rsync（remote synchronize）是 Liunx&#x2F;Unix 下的一个远程数据同步工具。它可通过 LAN&#x2F;WAN 快速同步多台主机间的文件和目录，并适当利用 rsync 算法（差分编码）以减少数据的传输。rsync 算法并不是每一次都整份传输，而是只传输两个文件的不同部分，因此其传输速度相当快。除此之外，rsync 可拷贝、显示目录属性，以及拷贝文件，并可选择性的压缩">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo的categories与tags配置">
-<meta property="og:url" content="http://chjw.gammainfo.com/2017/01/20/hexo%E7%9A%84categories%E4%B8%8Etags%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="Centos7使用rsync实现数据备份">
+<meta property="og:url" content="http://chjw.gammainfo.com/2021/05/17/Centos7%E4%BD%BF%E7%94%A8rsync%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/index.html">
 <meta property="og:site_name" content="Echo">
-<meta property="og:description" content="添加标签hexo new page tags确认站点配置文件里有tag_dir: tags确认主题配置文件里有tags: &#x2F;tags编辑站点的source&#x2F;tags&#x2F;index.md，添加 1234title: tagsdate: 2015-10-20 06:49:50type: &quot;tags&quot;comments: false">
+<meta property="og:description" content="rsync是什么rsync（remote synchronize）是 Liunx&#x2F;Unix 下的一个远程数据同步工具。它可通过 LAN&#x2F;WAN 快速同步多台主机间的文件和目录，并适当利用 rsync 算法（差分编码）以减少数据的传输。rsync 算法并不是每一次都整份传输，而是只传输两个文件的不同部分，因此其传输速度相当快。除此之外，rsync 可拷贝、显示目录属性，以及拷贝文件，并可选择性的压缩">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-01-20T06:00:56.000Z">
-<meta property="article:modified_time" content="2018-03-19T05:56:08.839Z">
+<meta property="article:published_time" content="2021-05-17T07:41:58.000Z">
+<meta property="article:modified_time" content="2021-05-17T07:58:07.033Z">
 <meta property="article:author" content="攻城师">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="centos">
 <meta name="twitter:card" content="summary">
     
 
@@ -186,7 +186,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-hexo的categories与tags配置" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Centos7使用rsync实现数据备份" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -194,7 +194,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            hexo的categories与tags配置
+            Centos7使用rsync实现数据备份
         </h1>
     
 
@@ -203,22 +203,17 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/01/20/hexo%E7%9A%84categories%E4%B8%8Etags%E9%85%8D%E7%BD%AE/">
-            <time datetime="2017-01-20T06:00:56.000Z" itemprop="datePublished">2017-01-20</time>
+        <a href="/2021/05/17/Centos7%E4%BD%BF%E7%94%A8rsync%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/">
+            <time datetime="2021-05-17T07:41:58.000Z" itemprop="datePublished">2021-05-17</time>
         </a>
     </div>
 
 
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/hexo/">hexo</a>
-    </div>
-
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/hexo/" rel="tag">hexo</a>
+        <a class="tag-link-link" href="/tags/centos/" rel="tag">centos</a>
     </div>
 
                     </div>
@@ -229,13 +224,44 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h2><p>hexo new page tags<br>确认站点配置文件里有tag_dir: tags<br>确认主题配置文件里有tags: /tags<br>编辑站点的source/tags/index.md，添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2015-10-20 06:49:50</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;tags&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
+            <h2 id="rsync是什么"><a href="#rsync是什么" class="headerlink" title="rsync是什么"></a>rsync是什么</h2><p>rsync（remote synchronize）是 Liunx/Unix 下的一个远程数据同步工具。它可通过 LAN/WAN 快速同步多台主机间的文件和目录，并适当利用 rsync 算法（差分编码）以减少数据的传输。rsync 算法并不是每一次都整份传输，而是只传输两个文件的不同部分，因此其传输速度相当快。除此之外，rsync 可拷贝、显示目录属性，以及拷贝文件，并可选择性的压缩以及递归拷贝。</p>
 <a id="more"></a>
 
-<h2 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h2><p>hexo new page categories<br>确认站点配置文件里有category_dir: categories<br>确认主题配置文件里有categories: /categories<br>编辑站点的source/categories/index.md，添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2015-10-20 06:49:50</span><br><span class="line"><span class="built_in">type</span>: <span class="string">&quot;categories&quot;</span></span><br><span class="line">comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="rsync优点"><a href="#rsync优点" class="headerlink" title="rsync优点"></a>rsync优点</h2><ul>
+<li>可以镜像保存整个目录树和文件系统。</li>
+<li>可以很容易做到保持原来文件的权限、时间、软硬连接等。</li>
+<li>无需特殊权限即可安装。</li>
+<li>拥有优化的流程和比较高的文件传输效率。</li>
+<li>可以使用shell（rsh、ssh）方式来传输文件。</li>
+<li>支持匿名运行。</li>
+</ul>
+<p>与 scp 相比，rsync 传输速度绝对远远超过 scp 的传输速度。</p>
+<h2 id="运行模式"><a href="#运行模式" class="headerlink" title="运行模式"></a>运行模式</h2><p>rsync 有两种常用的认证方式，一种是 rsync-daemon 方式，另外一种是 ssh 方式(类似于 scp)。在平时使用过程，我们使用最多的是 rsync-daemon 方式。</p>
+<p>这种模式是基于 C/S 模式的，在这种模式下，rsync 在后台启用了一个守护进程，这个守护进程在 rsync 服务器永久运行，用于接收请求传输文件，因此，客户端既可以把文件推送( push )给守护进程，也可以向守护进程拉取( pull )文件。rsync 的服务器模式非常适合为异地的中心备份服务器或数据异地存储库来使用。</p>
+<h2 id="安装rsync"><a href="#安装rsync" class="headerlink" title="安装rsync"></a>安装rsync</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install rsync -y</span><br></pre></td></tr></table></figure>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><p>配置服务端配置文件和同步规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;rsyncd.conf</span><br><span class="line">uid &#x3D; root</span><br><span class="line">gid &#x3D; root</span><br><span class="line">use chroot &#x3D; no</span><br><span class="line">max connections &#x3D; 10</span><br><span class="line">pid file &#x3D; &#x2F;var&#x2F;run&#x2F;rsyncd.pid</span><br><span class="line">log file &#x3D; &#x2F;var&#x2F;log&#x2F;rsync.log</span><br><span class="line">transfer logging &#x3D; yes</span><br><span class="line">timeout &#x3D; 900</span><br><span class="line">ignore nonreadable &#x3D; yes</span><br><span class="line">dont compress &#x3D; *.gz *.tgz *.zip *.z *.Z *.rpm *.deb *.bz2</span><br><span class="line"></span><br><span class="line">[ftp] ## 规则名称</span><br><span class="line">path &#x3D; &#x2F;data&#x2F;upload  ## 同步目录路径</span><br><span class="line">comment &#x3D; 规则表述</span><br><span class="line">read only &#x3D; yes  ## pull</span><br><span class="line">write only &#x3D; no  ## push</span><br><span class="line">hosts allow &#x3D; *  ## 允许所有IP</span><br><span class="line">list &#x3D; no</span><br><span class="line">ignore errors</span><br><span class="line">auth users &#x3D; backup</span><br><span class="line">secrets file &#x3D; &#x2F;etc&#x2F;rsyncd.pass  </span><br></pre></td></tr></table></figure>
+<p>配置可以访问的用户身份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;rsyncd.passwd</span><br><span class="line">backup:123456     #具有拉取数据的账号密码</span><br><span class="line">chmod 600 &#x2F;etc&#x2F;rsyncd.pass</span><br><span class="line">systemctl start rsyncd.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><p>只需配置密码即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;rsyncd.pass</span><br><span class="line">123456</span><br><span class="line">chmod 600 &#x2F;etc&#x2F;rsyncd.pass</span><br><span class="line">systemctl start rsyncd.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="客户端拉取测试"><a href="#客户端拉取测试" class="headerlink" title="客户端拉取测试"></a>客户端拉取测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -vzrtopg --delete --progress --password-file&#x3D;&#x2F;etc&#x2F;rsyncd.pass backup@10.0.2.15::ftp  &#x2F;home&#x2F;www</span><br></pre></td></tr></table></figure>
+<ul>
+<li>v是“–verbose”显示详细输出模式</li>
+<li>z是“–compress”压缩模式</li>
+<li>r是“–recursive”以子目录递归模式</li>
+<li>t是“–times“用来保持文件信息时间</li>
+<li>o是”–owner“用来保持文件的属主信息</li>
+<li>p是”–perms“用来保持文件权限</li>
+<li>g是”–group“用来保持文件的属组</li>
+<li>–progress：用来显示数据镜像同步的过程</li>
+<li>–delete：指定以rsync服务器为基准进行数据镜像同步，也就是要保持rsync服务器端目录与客户端目录的完全一致</li>
+<li>–exclude：用于排除不需要文件传输的类型</li>
+<li>/home/www：用户指定备份文件在客户端机器上的存放路径</li>
+</ul>
+
         
         </div>
         <footer class="article-footer">
@@ -289,15 +315,11 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
         
 <nav id="article-nav">
     
-        <a href="/2017/01/20/hexo%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    hexo使用
-                
-            </div>
-        </a>
     
+        <a href="/2020/11/23/Apache%E7%9A%84mpm%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Apache的mpm配置</div>
+        </a>
     
 </nav>
 

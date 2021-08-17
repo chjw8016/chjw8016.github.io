@@ -13,7 +13,7 @@
 <meta property="og:description" content="rsync是什么rsync（remote synchronize）是 Liunx&#x2F;Unix 下的一个远程数据同步工具。它可通过 LAN&#x2F;WAN 快速同步多台主机间的文件和目录，并适当利用 rsync 算法（差分编码）以减少数据的传输。rsync 算法并不是每一次都整份传输，而是只传输两个文件的不同部分，因此其传输速度相当快。除此之外，rsync 可拷贝、显示目录属性，以及拷贝文件，并可选择性的压缩">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-17T07:41:58.000Z">
-<meta property="article:modified_time" content="2021-06-02T04:03:57.729Z">
+<meta property="article:modified_time" content="2021-08-17T04:21:49.603Z">
 <meta property="article:author" content="攻城师">
 <meta property="article:tag" content="centos">
 <meta name="twitter:card" content="summary">
@@ -247,19 +247,27 @@
 <h2 id="客户端配置（10-0-2-16）"><a href="#客户端配置（10-0-2-16）" class="headerlink" title="客户端配置（10.0.2.16）"></a>客户端配置（10.0.2.16）</h2><p>只需配置密码即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;rsyncd.pass</span><br><span class="line">123456</span><br><span class="line">chmod 600 &#x2F;etc&#x2F;rsyncd.pass</span><br><span class="line">systemctl restart rsyncd.service</span><br></pre></td></tr></table></figure>
 
-<h2 id="客户端拉取测试"><a href="#客户端拉取测试" class="headerlink" title="客户端拉取测试"></a>客户端拉取测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -vzurtopg --delete --progress --password-file&#x3D;&#x2F;etc&#x2F;rsyncd.pass backup@10.0.2.15::ftp  &#x2F;home&#x2F;www</span><br></pre></td></tr></table></figure>
+<h2 id="客户端拉取测试"><a href="#客户端拉取测试" class="headerlink" title="客户端拉取测试"></a>客户端拉取测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avzu --progress --password-file&#x3D;&#x2F;etc&#x2F;rsyncd.pass backup@10.0.2.15::ftp  &#x2F;home&#x2F;www</span><br></pre></td></tr></table></figure>
+<h2 id="客户端推送测试"><a href="#客户端推送测试" class="headerlink" title="客户端推送测试"></a>客户端推送测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avzu --progress --password-file&#x3D;&#x2F;etc&#x2F;rsyncd.pass  &#x2F;home&#x2F;www  backup@10.0.2.15::ftp</span><br></pre></td></tr></table></figure>
+
 <ul>
+<li>a是“–archive”归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD</li>
 <li>v是“–verbose”显示详细输出模式</li>
 <li>z是“–compress”压缩模式</li>
 <li>u是“–update”只进行更新</li>
 <li>r是“–recursive”以子目录递归模式</li>
+<li>l是“–links”保留软链结</li>
 <li>t是“–times“用来保持文件信息时间</li>
 <li>o是”–owner“用来保持文件的属主信息</li>
 <li>p是”–perms“用来保持文件权限</li>
 <li>g是”–group“用来保持文件的属组</li>
+<li>D是“–devices”用来保持设备文件信息</li>
 <li>–progress：用来显示数据镜像同步的过程</li>
-<li>–delete：指定以rsync服务器为基准进行数据镜像同步，也就是要保持rsync服务器端目录与客户端目录的完全一致</li>
-<li>–exclude：用于排除不需要文件传输的类型</li>
+<li>–delete：指定以rsync服务器为基准进行数据镜像同步，也就是要保持rsync服务器端目录与客户端目录的完全一致（谨慎使用）</li>
+<li>–exclude=PATTERN 指定排除不需要传输的文件模式</li>
+<li>–include=PATTERN 指定不排除而需要传输的文件模式</li>
+<li>–exclude-from=FILE 排除FILE中指定模式的文件</li>
+<li>–include-from=FILE 不排除FILE指定模式匹配的文件</li>
 <li>/home/www：用户指定备份文件在客户端机器上的存放路径</li>
 </ul>
 
